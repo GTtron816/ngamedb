@@ -1,5 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
 <h1>New Games</h1>
 
 {% for game in object_list %}
    <a href="{% url 'gamedetails' game.pk %}">{{game.title}}</a><br>
 {% endfor%}</ul>
+
+
+
+{% endblock %}
+
