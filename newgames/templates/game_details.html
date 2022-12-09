@@ -65,35 +65,65 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-         
-
-       
-
-
-
-
-
 <small>{{game.dev}}</small><br><br>
 <small>{{game.pub}}</small><br><br>
 <small>{{game.gen}}</small><br><br>
 <small>{{game.gtype}}</small><br><br>
 <p>{{game.syn}}</p><br><br>
+
+
+<br><br><br>
+<form action="{%url 'hype_game'  game.pk %}"
+method="POST">
+{% csrf_token %}
+{% if setmeh == True%}
+<button disabled id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary">HYPED?</button>
+
+{% elif sethyped == True %}
+  <button id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-danger">UNHYPED</button>
+{%else%}
+  <button id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary">HYPED?</button>
+  {%endif%}
+   
+   - {{ total_hyped }} Users are Hyped
+   <script>
+    var hy = parseInt({{ total_hyped }});
+    var meh = parseInt({{ total_meh }});
+    var all = hy + meh;
+    var inter = (hy/all)*100;
+    document.writeln(inter);
+
+
+   </script>
+
+</form>
+ 
+<form action="{%url 'meh_game' game.pk %}"
+method="POST">
+{% csrf_token %}
+{%if sethyped == True%}
+<button disabled id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger">Meh..</button>
+
+{% elif setmeh == True %}
+   <button id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-primary">UnMeh</button>
+
+{% else %}
+  <button id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger">Meh..</button>
+  {%endif%}
+   - {{ total_meh }} Users are not Hyped
+   <script>
+    var hy = parseInt({{ total_hyped }});
+    var meh = parseInt({{ total_meh }});
+    var all = hy + meh;
+    var inter = (meh/all)*100;
+    document.writeln(inter);
+
+
+   </script>
+</form>
+
+
+
+<br><br>
 
 {% endblock %}
