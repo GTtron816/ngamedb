@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView
-from.models import Game
+from.models import Game,Comment
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy,reverse
+from django.shortcuts import redirect
+from.forms import CommentForm
+from django.contrib.auth.models import User 
+from django.template.response import TemplateResponse
 #def home(request):
 #   return render(request, 'home.html', {})
 
@@ -10,12 +14,16 @@ class HomeView(ListView):
     model = Game
     template_name= 'home.html'
 
+class RedView(ListView):
+    model = Game
+    template_name= 'redirect.html'
+
 
 class GameDetailsView(DetailView):
-    model = Game
-    template_name = 'game_details.html'
+     model = Game
+     template_name = 'game_details.html'
 
-    def get_context_data(self, *args,**kwargs):
+     def get_context_data(self, *args,**kwargs):
         context = super(GameDetailsView, self).get_context_data(*args, **kwargs)
         stuff=get_object_or_404(Game, id=self.kwargs['pk'])
         total_hyped=stuff.total_hype()
@@ -26,11 +34,21 @@ class GameDetailsView(DetailView):
             sethyped = True
         if stuff.meh.filter(id=self.request.user.id).exists():
             setmeh = True
-
+        tot=total_hyped+total_meh
+        try:
+          inter=(total_hyped/tot)*100
+        except:
+          inter=0
+        try:
+          ninter=(total_meh/tot)*100
+        except:
+          ninter=0
         context["total_hyped"] = total_hyped
         context["total_meh"] = total_meh
         context["sethyped"]=  sethyped
         context["setmeh"]=  setmeh
+        context["inter"]= inter
+        context["ninter"]= ninter
         return context
  
 class AddGameView(CreateView):
@@ -61,3 +79,18 @@ def MehView(request, pk):
         setmeh = False
     return HttpResponseRedirect(reverse('gamedetails', args=[str(pk)]))
 
+class AddCommentView(CreateView):
+    model = Comment
+    form_class= CommentForm
+    template_name = 'add_comment.html'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.game_id = self.kwargs['pk']
+        return super().form_valid(form)
+    success_url= "/red/{game_id}"
+    
+    
+    
+
+    

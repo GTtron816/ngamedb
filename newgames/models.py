@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-
+from django.conf import settings
 class Game(models.Model):
     title = models.CharField(max_length=255)
     dev=models.CharField(max_length=255)
@@ -31,4 +31,15 @@ class Game(models.Model):
         return reverse('gamedetails', args=(str(self.id)))
 
 
+class Comment(models.Model):
+    game = models.ForeignKey(Game,related_name="comments",on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    body = models.TextField()
+    date_added = models. DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return '%s - %s' % (self.game.title, self.name)
+    
+   
+    
+   

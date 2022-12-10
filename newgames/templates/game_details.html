@@ -14,13 +14,14 @@
     
     <div class="col-sm">
       
-
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 500px; height: 300px;">
+     
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 540px; height: 300px;">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
+        
         <div class="carousel-inner">
            <div class="carousel-item active">
              <img class="d-block w-100" src="{{ game.sc1.url }}" alt="First slide"    width="500" height="285"     >
@@ -42,19 +43,14 @@
         </a>
       </div>
 
-
-
-
-
-
-
-
+   
 
 
     </div>
     <div class="col-sm">
+      <div class="embed-responsive embed-responsive-16by9">
       <iframe width="500" height="285" src="{{game.trailer}}?autoplay=1">
-      </iframe>
+      </iframe></div>
     </div>
   </div>
 </div>
@@ -72,7 +68,6 @@
 <p>{{game.syn}}</p><br><br>
 
 
-<br><br><br>
 <form action="{%url 'hype_game'  game.pk %}"
 method="POST">
 {% csrf_token %}
@@ -86,18 +81,10 @@ method="POST">
   {%endif%}
    
    - {{ total_hyped }} Users are Hyped
-   <script>
-    var hy = parseInt({{ total_hyped }});
-    var meh = parseInt({{ total_meh }});
-    var all = hy + meh;
-    var inter = (hy/all)*100;
-    document.writeln(inter);
-
-
-   </script>
-
 </form>
  
+<br><br>
+
 <form action="{%url 'meh_game' game.pk %}"
 method="POST">
 {% csrf_token %}
@@ -111,19 +98,60 @@ method="POST">
   <button id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger">Meh..</button>
   {%endif%}
    - {{ total_meh }} Users are not Hyped
-   <script>
-    var hy = parseInt({{ total_hyped }});
-    var meh = parseInt({{ total_meh }});
-    var all = hy + meh;
-    var inter = (meh/all)*100;
-    document.writeln(inter);
 
+   <br><br>
 
-   </script>
+<h4>Hyped Users</h4>
+   <div class="progress"  >
+    <div  class="progress-bar" role="progressbar" aria-label="Example with label" style="width: {{inter}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{inter}}%</div>
+  </div>
+
+  <br><br>
+
+<h4>Meh.... Users</h4>
+   <div class="progress"   >
+    <div  class="progress-bar" role="progressbar" aria-label="Example with label" style="width: {{ninter}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ninter}}%</div>
+  </div>
+  
+  
 </form>
+
+
+<br><br>
 
 
 
 <br><br>
 
+<br><br>
+<h2>Add Comments</h2> <hr><br>
+
+
+<iframe id="t" frameBorder="0" width="400" height="300" src="http://127.0.0.1:8000/gamedetails/{{game.pk}}/comment"></iframe>
+
+<h2>Comments</h2>
+<hr>
+{% if not game.comments.all %}
+    No comments...
+
+{%else%}
+    {% for comment in game.comments.all %}
+          <strong>{{comment.user}}-
+            {{comment.date_added}}
+          </strong>
+          <br/>
+          {{comment.body}}
+          
+          <br>
+    {% endfor %}
+
+{%endif%}
+<br><br>
+<script>
+
+var iframe = document.getElementById('t');
+iframe.src = iframe.src;
+
+
+</script>
 {% endblock %}

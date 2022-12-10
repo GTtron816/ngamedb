@@ -1,0 +1,9 @@
+<script>
+    window.onload = function() {
+        if(!window.location.hash) {
+            window.location = window.location + '#loaded';
+            parent.location.reload();
+        }
+    }
+    
+    </script>
