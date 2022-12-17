@@ -10,10 +10,11 @@
 
    
 
-    <div class="container" >
+    <div  >
       <div class="row">
          {% for game in object_list %}
-        <div class="col-xl">
+         
+        <div class="col-xl" style="margin-bottom: 20px;"  >
           
          <div class="card" style="width: 18rem;"  onclick="location.href='{% url 'gamedetails' game.pk %}'" >
             <img src="{{ game.title_img.url }}" class="card-img-top" alt="..."  width="350" height="180"    >
@@ -22,6 +23,7 @@
             </div>
           </div>
         </div>
+     
         {% endfor%}
       </div>
     </div>

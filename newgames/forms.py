@@ -10,3 +10,9 @@ class CommentForm(forms.ModelForm):
 			'body': forms.Textarea(attrs={'class': 'form-control'}),			
 			
 		}
+  
+class AddGameForm(forms.ModelForm):
+	class Meta:
+		model = Game
+		fields=('title','dev','pub','gen','gtype','syn','title_img','sc1','sc2','sc3','trailer','plat')
+		

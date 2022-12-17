@@ -4,7 +4,7 @@ from.models import Game,Comment
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy,reverse
 from django.shortcuts import redirect
-from.forms import CommentForm
+from.forms import CommentForm,AddGameForm
 from django.contrib.auth.models import User 
 from django.template.response import TemplateResponse
 #def home(request):
@@ -54,7 +54,10 @@ class GameDetailsView(DetailView):
 class AddGameView(CreateView):
     model = Game
     template_name = 'addgame.html'
-    fields = '__all__'
+    form_class=AddGameForm
+    def getid(self):
+        id=self.kwargs['pk']
+    success_url= "/gamedetails/{id}"
 
 def HypeView(request, pk):
     game = get_object_or_404(Game, id=request.POST.get('game_id'))

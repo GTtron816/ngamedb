@@ -27,8 +27,6 @@ class Game(models.Model):
     def __str__(self):
         return self.title + '|' + self.dev + '|' + self.pub
     
-    def get_absolute_url(self):
-        return reverse('gamedetails', args=(str(self.id)))
 
 
 class Comment(models.Model):
