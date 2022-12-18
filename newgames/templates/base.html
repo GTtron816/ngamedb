@@ -49,20 +49,19 @@
               <a class="nav-link" href="{% url 'add' %}">Add Game</a>
             </li>
             {%endif%}
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
+            {%if games%}
+            <li class="nav-item dropdown ">
+              <form method="get" action="{% url 'genrefilter' %}">
+                <select name="gen" class="form-select bg-dark" aria-label="Select Genre" style="color: white; border:0px;
+                outline:0px; margin-top: 9px"    onchange='if(this.value != "null") { this.form.submit(); }'>
+                  <option value="null" selected>Select a Genre</option>
+                  {% for game in games %}
+                  <option value="{{game.gen}}">{{game.gen}}</option>
+                  {% endfor%}
+                </select>
+              </form>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
+            {%endif%}
           </ul>
          
         </div>

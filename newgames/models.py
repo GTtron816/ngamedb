@@ -34,6 +34,7 @@ class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     body = models.TextField()
     date_added = models. DateTimeField(auto_now_add=True)
+    
 
     def __str__(self):
         return '%s - %s' % (self.game.title, self.name)

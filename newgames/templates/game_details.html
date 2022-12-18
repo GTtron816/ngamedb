@@ -138,14 +138,14 @@ method="POST">
     No comments...
 
 {%else%}
-    {% for comment in game.comments.all %}
+    {% for comment in comments %}
           <strong>{{comment.user}}-
             {{comment.date_added}}
           </strong>
           <br/>
           {{comment.body}}
           
-          <br>
+          <br><br>
     {% endfor %}
 
 {%endif%}

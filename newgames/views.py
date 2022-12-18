@@ -1,23 +1,30 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView
 from.models import Game,Comment
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse_lazy,reverse
 from django.shortcuts import redirect
 from.forms import CommentForm,AddGameForm
 from django.contrib.auth.models import User 
 from django.template.response import TemplateResponse
+#from .filters import GameFilter
 #def home(request):
 #   return render(request, 'home.html', {})
 
 class HomeView(ListView):
     model = Game
     template_name= 'home.html'
+    
+
+    def get_context_data(self, *args,**kwargs):
+        context = super(HomeView, self).get_context_data(*args, **kwargs)
+        context["games"]=Game.objects.values('gen').distinct()
+        return context
 
 class RedView(ListView):
     model = Game
     template_name= 'redirect.html'
-
+    
 
 class GameDetailsView(DetailView):
      model = Game
@@ -43,6 +50,8 @@ class GameDetailsView(DetailView):
           ninter=(total_meh/tot)*100
         except:
           ninter=0
+        context["comments"]=Comment.objects.order_by('-date_added')
+        context["games"]= Game.objects.values('gen').distinct()
         context["total_hyped"] = total_hyped
         context["total_meh"] = total_meh
         context["sethyped"]=  sethyped
@@ -50,6 +59,7 @@ class GameDetailsView(DetailView):
         context["inter"]= inter
         context["ninter"]= ninter
         return context
+
  
 class AddGameView(CreateView):
     model = Game
@@ -92,8 +102,24 @@ class AddCommentView(CreateView):
         form.instance.game_id = self.kwargs['pk']
         return super().form_valid(form)
     success_url= "/red/{game_id}"
+
+class GenreFilter(ListView):
+    model = Game
+    template_name= 'genre.html'
+    
+def genre(request): 
+  select_value = request.GET.get('gen')
+  game_filter= Game.objects.filter(gen=select_value)
+  games=Game.objects.values('gen').distinct()
+  context={
+      'game_filter': game_filter,
+      'games':games,
+      
+  }
+  return render(request,'genre.html',context)
+
     
     
-    
+
 
     
