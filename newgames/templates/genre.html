@@ -12,13 +12,13 @@
       {% for game in game_filter %}
       
       <div  style="margin-bottom: 30px; margin-left: 30px;  "  >
-          
+        <figure>
         <div class="card" style="width: 18rem;"  onclick="location.href='{% url 'gamedetails' game.pk %}'" >
            <img src="{{ game.title_img.url }}" class="card-img-top" alt="..."  width="350" height="180"    >
            <div class="card-body">
              <h5 class="card-title">{{game.title}}</h5>
            </div>
-         </div>
+         </div></figure>
        </div>
      
       {% endfor%}
