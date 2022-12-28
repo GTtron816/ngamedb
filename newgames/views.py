@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from.models import Game,Comment
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse_lazy,reverse
@@ -125,6 +125,10 @@ class UpdateGameView(UpdateView):
     def getid(self):
         id=self.kwargs['pk']
     success_url= "/gamedetails/{id}"
+class DeleteGameView(DeleteView):
+    model= Game
+    template_name = 'delete_game.html'
+    success_url= "/"
 
 
     

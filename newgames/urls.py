@@ -1,6 +1,6 @@
 from django.urls import path, include,re_path
 from.import views
-from .views import HomeView, GameDetailsView, AddGameView,HypeView,MehView,AddCommentView,RedView,genre,GenreFilter,UpdateGameView
+from .views import HomeView, GameDetailsView, AddGameView,HypeView,MehView,AddCommentView,RedView,genre,GenreFilter,UpdateGameView,DeleteGameView
 from django.views.generic import TemplateView
 urlpatterns = [
     #path('',views.home, name='home'),
@@ -13,6 +13,6 @@ urlpatterns = [
     path('red/<int:pk>', RedView.as_view(), name='red'),
     path('genfilter',genre,name="genrefilter"),
     path('gamedetails/edit/<int:pk>', UpdateGameView.as_view(), name='update_game'),
-
+    path('gamedetails/<int:pk>/delete', DeleteGameView.as_view(), name='delete_game'),
 ]
  
