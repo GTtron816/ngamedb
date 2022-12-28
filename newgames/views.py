@@ -19,6 +19,7 @@ class HomeView(ListView):
     def get_context_data(self, *args,**kwargs):
         context = super(HomeView, self).get_context_data(*args, **kwargs)
         context["games"]=Game.objects.values('gen').distinct()
+        context["allgames"]=Game.objects.order_by('-pk')
         return context
 
 class RedView(ListView):
