@@ -4,7 +4,9 @@
 
 {% block content %}
 
-<h1>{{game.title}}</h1><br><br>
+<h1>{{game.title}}</h1><br>
+{% if request.user.is_superuser %}
+<a href="{% url 'update_game' game.pk %}">Update</a><br><br> {%endif%}
 <img width="300px" height="200px" src="{{ game.title_img.url }}"><br><br>
 
 

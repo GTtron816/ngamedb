@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from.models import Game,Comment
 from django.http import HttpResponseRedirect,HttpResponse
 from django.urls import reverse_lazy,reverse
@@ -117,6 +117,15 @@ def genre(request):
       
   }
   return render(request,'genre.html',context)
+
+class UpdateGameView(UpdateView):
+    model= Game
+    template_name = 'update_game.html'
+    form_class=AddGameForm
+    def getid(self):
+        id=self.kwargs['pk']
+    success_url= "/gamedetails/{id}"
+
 
     
     
