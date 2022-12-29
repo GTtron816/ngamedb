@@ -72,19 +72,20 @@
 <small>{{game.plat}}</small><br><br>
 <small>{{game.gen}}</small><br><br>
 <small>{{game.gtype}}</small><br><br>
-<p>{{game.syn}}</p><br><br>
+<p>{{game.syn|safe}}</p><br><br>
 
 
 <form action="{%url 'hype_game'  game.pk %}"
 method="POST">
 {% csrf_token %}
 {% if setmeh == True%}
-<button disabled id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary">HYPED?</button>
-
+<button disabled style="background-color:transparent; border: none; color: skyblue;"id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary"><div class="bth">  <i class="fa fa-solid fa fa-heart"></i></div>&nbsp;HYPED?</button>
 {% elif sethyped == True %}
-  <button id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-danger">UNHYPED</button>
+  <button style="background-color:transparent; border: none; color: red;"id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary"><div class="bth">  <i class="fa fa-solid fa fa-heart"></i></div>&nbsp;UNHYPE?</button>
 {%else%}
-  <button id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary">HYPED?</button>
+
+  <button style="background-color:transparent; border: none; color: blue;"id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary"><div class="bth">  <i class="fa fa-solid fa fa-heart"></i></div>&nbsp;HYPED?</button>
+
   {%endif%}
    
    - {{ total_hyped }} Users are Hyped
@@ -96,13 +97,14 @@ method="POST">
 method="POST">
 {% csrf_token %}
 {%if sethyped == True%}
-<button disabled id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger">Meh..</button>
-
+<button disabled style="background-color:transparent; border: none; color: red;"id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger"><div class="bth"> <i class="fa-solid fa-thumbs-down"></i></div>&nbsp;Meh...</button>
 {% elif setmeh == True %}
-   <button id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-primary">UnMeh</button>
+
+   <button style="background-color:transparent; border: none; color: blue;"id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger"><div class="bth"> <i class="fa-solid fa-thumbs-down"></i></div>&nbsp;UnMeh</button>
 
 {% else %}
-  <button id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger">Meh..</button>
+  <button style="background-color:transparent; border: none; color: red;"id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger"><div class="bth"> <i class="fa-solid fa-thumbs-down"></i></div>&nbsp;Meh...</button>
+
   {%endif%}
    - {{ total_meh }} Users are not Hyped
 
