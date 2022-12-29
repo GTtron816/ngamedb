@@ -2,13 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.conf import settings
+from ckeditor.fields import RichTextField
 class Game(models.Model):
     title = models.CharField(max_length=255)
     dev=models.CharField(max_length=255)
     pub=models.CharField(max_length=255)
     gen=models.CharField(max_length=255)
     gtype=models.CharField(max_length=255)
-    syn=models.TextField()
+    syn=RichTextField(blank=True, null=True)
     title_img = models.ImageField(null=True, blank=True, upload_to="title_imgs")
     sc1 = models.ImageField(null=True, blank=True, upload_to="screenshots")
     sc2 = models.ImageField(null=True, blank=True, upload_to="screenshots")
