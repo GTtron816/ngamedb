@@ -12,10 +12,10 @@
 <img width="300px" height="200px" src="{{ game.title_img.url }}"><br><br>
 
 
-<div>
+<div class="medcon">
   <div class="row">
     
-    <div style="margin-left:180px;" >
+    <div  >
       
       
       <div id="carouselExampleIndicators" class="carousel" data-ride="carousel" style="height: 350px; width: 620px;" >
@@ -55,21 +55,21 @@
     </div>
   </div>
 </div>
-</div>
+<!--/div>
 
 
 
 
 
 
-
+<div class="medcon"-->
 <small>{{game.dev}}</small><br><br>
 <small>{{game.pub}}</small><br><br>
 <small>{{game.plat}}</small><br><br>
 <small>{{game.gen}}</small><br><br>
 <small>{{game.gtype}}</small><br><br>
 <p>{{game.syn|safe}}</p><br><br>
-
+</div>
 
 <form action="{%url 'hype_game'  game.pk %}"
 method="POST">
