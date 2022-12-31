@@ -2,8 +2,8 @@
 
 
 {% block content %}
-
-<div class="col-sm" style="margin: 30px;">
+<div style="margin-left: 40px;" >
+<div class="col-sm" >
 <div id="carouselExampleIndicators" class="carousel" data-ride="carousel" style="height: 350px; width: fit-content; "  >
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -38,7 +38,7 @@
       <div class="row" >
          {% for game in allgames %}
          
-        <div  style="margin-top: 30px; margin-left: 30px; " >
+        <div  style="padding: 10px;  " >
           <figure>
          <div class="card" style="width: 18rem;"  onclick="location.href='{% url 'gamedetails' game.pk %}'" >
             <img src="{{ game.title_img.url }}" class="card-img-top" alt="..."  width="350" height="180" >
@@ -57,7 +57,7 @@
     </div>
 
 
-
+  </div>
 
 {% endblock %}
 
