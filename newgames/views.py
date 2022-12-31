@@ -44,14 +44,13 @@ class GameDetailsView(DetailView):
             setmeh = True
         tot=total_hyped+total_meh
         try:
-          inter=(total_hyped/tot)*100
+            inter=(total_hyped/tot)*100
         except:
-          inter=0
+            inter=0
         try:
-          ninter=(total_meh/tot)*100
+            ninter=(total_meh/tot)*100
         except:
-          ninter=0
-        context["comments"]=Comment.objects.order_by('-date_added')
+            ninter=0
         context["games"]= Game.objects.values('gen').distinct()
         context["total_hyped"] = total_hyped
         context["total_meh"] = total_meh

@@ -137,7 +137,7 @@ method="POST">
     No comments...
 
 {%else%}
-    {% for comment in comments %}
+    {% for comment in game.comments.all %} 
           <strong>{{comment.user}}-
             {{comment.date_added}}
           </strong>
