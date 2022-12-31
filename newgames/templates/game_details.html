@@ -56,14 +56,18 @@
   </div>
 </div>
 
-<small>{{game.dev}}</small><br><br>
-<small>{{game.pub}}</small><br><br>
-<small>{{game.plat}}</small><br><br>
-<small>{{game.gen}}</small><br><br>
-<small>{{game.gtype}}</small><br><br>
-<p>{{game.syn|safe}}</p><br><br>
-</div>
 
+<label class="abt">Developer: {{game.dev}}</label><br><br>
+<label class="abt">Publisher: {{game.pub}}</label><br><br>
+<label class="abt">Platforms: {{game.plat}}</label><br><br>
+<label class="abt">Genre: {{game.gen}}</label><br><br>
+<label class="abt">Paid/Free: {{game.gtype}}</label><br><br>
+<div class="abt"><label><h4>Synopsis</h4></label>
+<p >{{game.syn|safe}}</p></div >
+</div>
+<br>
+<br>
+<div class="ucon">
 <form action="{%url 'hype_game'  game.pk %}"
 method="POST">
 {% csrf_token %}
@@ -73,7 +77,7 @@ method="POST">
   <button style="background-color:transparent; border: none; color: red;"id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary"><div class="bth">  <i class="fa fa-solid fa fa-heart"></i></div>&nbsp;UNHYPE?</button>
 {%else%}
 
-  <button style="background-color:transparent; border: none; color: blue;"id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary"><div class="bth">  <i class="fa fa-solid fa fa-heart"></i></div>&nbsp;HYPED?</button>
+  <button style="background-color:transparent; border: none; color: #66c0f4;"id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary"><div class="bth">  <i class="fa fa-solid fa fa-heart"></i></div>&nbsp;HYPED?</button>
 
   {%endif%}
    
@@ -89,7 +93,7 @@ method="POST">
 <button disabled style="background-color:transparent; border: none; color: red;"id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger"><div class="bth"> <i class="fa-solid fa-thumbs-down"></i></div>&nbsp;Meh...</button>
 {% elif setmeh == True %}
 
-   <button style="background-color:transparent; border: none; color: blue;"id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger"><div class="bth"> <i class="fa-solid fa-thumbs-down"></i></div>&nbsp;UnMeh</button>
+   <button style="background-color:transparent; border: none; color: #66c0f4;"id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger"><div class="bth"> <i class="fa-solid fa-thumbs-down"></i></div>&nbsp;UnMeh</button>
 
 {% else %}
   <button style="background-color:transparent; border: none; color: red;"id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger"><div class="bth"> <i class="fa-solid fa-thumbs-down"></i></div>&nbsp;Meh...</button>
@@ -126,7 +130,7 @@ method="POST">
 
 
 <iframe id="t" frameBorder="0" width="400" height="400" src="http://127.0.0.1:8000/gamedetails/{{game.pk}}/comment"></iframe>
-
+</div>
 <h2>Comments</h2>
 <hr>
 {% if not game.comments.all %}
