@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div style="background-color: #2a475e;
+border: solid 10px rgb(37, 56, 80);
+padding: 80px;">
 <h2>Are You Sure To Delete {{game.title}}?</h2>
 
 <form method="POST" enctype="multipart/form-data">
  {% csrf_token %}
- <button>Delete Game</button>
-
+ <button class="btn btn-primary">Delete Game</button>
+</div>
 
 
 {% endblock %}
