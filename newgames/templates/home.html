@@ -41,7 +41,7 @@
         <div  style="margin-left: 50px; margin-top: 30px;" >
           <figure>
          <div class="card" style="width: 18rem;"  onclick="location.href='{% url 'gamedetails' game.pk %}'" >
-            <img src="{{ game.title_img.url }}" class="card-img-top" alt="..."  width="350" height="180" >
+            <img src="{{ game.title_img.url }}" class="card-img-top" alt="..."  width="350" height="180">
              
             <div class="card-body">
               <h5 class="card-title">{{game.title}}</h5> {% if request.user.is_superuser %}
