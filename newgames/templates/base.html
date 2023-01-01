@@ -89,7 +89,17 @@
       width:70px;
       padding:0px;
      }
-     
+     footer a {
+  color: aliceblue;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+footer a:hover, footer a:focus {
+  text-decoration: none;
+}
+
+
 
       </style>
    <script>
@@ -180,11 +190,49 @@
         </div>
       </nav>
 
+    
+
     <div style="margin-left: 50px; margin-right: 50px;  margin-top: 20px;  " >
     {% block content %}
 
     {% endblock %}
    </div>
+
+   <footer class="w-100 py-4 flex-shrink-0 " style="position:relative; bottom:0;">
+    <div class="container py-4">
+        <div class="row gy-4 gx-5">
+            <div class="col-lg-4 col-md-6">
+                <img class="logo" src="/media/icon.png" onclick="location.href='{% url 'home' %}'">
+                <p class="small text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary" href="#">Bootstrapious.com</a></p>
+            </div>
+            
+            <div class="col-lg-2 col-md-6"  style="margin-left: 50px;">
+                <h5 class="text-white mb-3">Quick links</h5>
+                <ul class="list-unstyled text-muted">
+                  
+                    <li><a href="{% url 'home' %}">Home</a></li>
+
+                    {% if user.is_authenticated%}
+                    <li><a href="{% url 'logout' %}">logout</a></li>
+                    {%else%}
+                    
+
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                    
+                    
+                    <li><a href="{% url 'login' %}">login</a></li>
+                    {%endif%}
+                    
+                    {% if request.user.is_superuser %}
+                    <li><a href="{% url 'add' %}">Add Game</a></li>
+                    {%endif%}
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
