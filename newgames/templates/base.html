@@ -113,10 +113,7 @@ footer{
  .cont{
   flex:1;
  }
- select option{
-  background:rgb(39, 40, 51);
-  border:none;
- }
+ 
 
       </style>
    <script>
@@ -135,7 +132,7 @@ footer{
    
   </head>
   <body class="bdy">
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-image: linear-gradient(25deg,rgb(39, 50, 62),rgb(44, 65, 88))">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(44, 65, 88)">
         <!--a class="navbar-brand" href="#">NGameDB</a-->
         <img class="logo" src="/media/icon.png" onclick="location.href='{% url 'home' %}'">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -192,7 +189,7 @@ footer{
             {%if games%}
             <li class="nav-item dropdown ">
               <form method="get" action="{% url 'genrefilter' %}">
-                <select id="dropdown" name="gen" class="form-select" aria-label="Select Genre" style="color: white; border:0px; background-color: transparent;
+                <select id="dropdown" name="gen" class="form-select" aria-label="Select Genre" style="color: white; border:0px; background-color: rgb(44, 65, 88);
                 outline:0px; margin-top: 9px"    onchange='if(this.value != "null") { this.form.submit(); }'>
                   <option value="null" selected>Select a Genre</option>
                   {% for game in games %}
