@@ -65,7 +65,7 @@
 <div class="abt"><label><h4>Synopsis</h4></label>
 <p >{{game.syn|safe}}</p></div >
 </div>
-<br>
+
 <br>
 <div class="ucon">
 <form action="{%url 'hype_game'  game.pk %}"
@@ -116,19 +116,20 @@ method="POST">
     <div  class="progress-bar" role="progressbar" aria-label="Example with label" style="width: {{ninter}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ninter}}%</div>
   </div>
   
-
-<br><br>
-
+</div>
 
 
-<br><br>
 
-<br><br>
+
+
+
+<br>
+<div class="ucon">
 <h2>Add Comments</h2> <hr><br>
 
 
 <iframe id="t" frameBorder="0" width="400" height="400" src="http://127.0.0.1:8000/gamedetails/{{game.pk}}/comment"></iframe>
-</div>
+
 <h2>Comments</h2>
 <hr>
 {% if not game.comments.all %}
@@ -146,7 +147,7 @@ method="POST">
     {% endfor %}
 
 {%endif%}
-<br><br>
+</div><br>
 <script>
 
 var iframe = document.getElementById('t');
@@ -154,4 +155,5 @@ iframe.src = iframe.src;
 
 
 </script>
+
 {% endblock %}

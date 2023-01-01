@@ -2,15 +2,15 @@
 
 
 {% block content %}
-
+<div class="bform">
 <h1>Update Game Details</h1>
 <div class="form-group" style="width: 50%;">
 <form method="POST" enctype="multipart/form-data">
  {% csrf_token %}
  {{ form.media }}
  {{ form.as_p }}
- <button>Update</button>
-</div>
+ <button class="btn btn-primary">Update</button>
+</div></div>
 
 
 {% endblock %}
