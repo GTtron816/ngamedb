@@ -72,52 +72,50 @@
 method="POST">
 {% csrf_token %}
 {% if setmeh == True%}
-<button disabled style="background-color:transparent; border: none; color: skyblue;"id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary"><div class="bth">  <i class="fa fa-solid fa fa-heart"></i></div>&nbsp;HYPED?</button>
+<button disabled style="background-color:transparent; border: none; color: skyblue;"id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary"><div class="bth">  <i class="fa fa-solid fa fa-heart fa-xl "></i></div>&nbsp;<div class="t2"> HYPED?</div></button>
 {% elif sethyped == True %}
-  <button style="background-color:transparent; border: none; color: red;"id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary"><div class="bth">  <i class="fa fa-solid fa fa-heart"></i></div>&nbsp;UNHYPE?</button>
+  <button style="background-color:transparent; border: none; color: red;"id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary"><div class="bth">  <i class="fa fa-solid fa fa-heart fa-xl "></i></div>&nbsp;<div class="t2">UNHYPE?</div></button>
 {%else%}
 
-  <button style="background-color:transparent; border: none; color: #66c0f4;"id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary"><div class="bth">  <i class="fa fa-solid fa fa-heart"></i></div>&nbsp;HYPED?</button>
+  <button style="background-color:transparent; border: none; color: #66c0f4;"id="hy" type="submit", name="game_id", value="{{ game.id }}", class="btn btn-primary"><div class="bth">  <i class="fa fa-solid fa fa-heart  fa-xl "></i></div>&nbsp;<div class="t2">HYPED?</div></button>
 
   {%endif%}
    
    - {{ total_hyped }} Users are Hyped
 </form>
- 
-<br><br>
+<br>
+<h4>Hyped Users</h4>
+   <div class="progress"  >
+    <div  class="progress-bar" role="progressbar" aria-label="Example with label" style="width: {{inter}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{inter}}%</div>
+  </div><br><br>
+
 
 <form action="{%url 'meh_game' game.pk %}"
 method="POST">
 {% csrf_token %}
 {%if sethyped == True%}
-<button disabled style="background-color:transparent; border: none; color: red;"id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger"><div class="bth"> <i class="fa-solid fa-thumbs-down"></i></div>&nbsp;Meh...</button>
+<button disabled style="background-color:transparent; border: none; color: red;"id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger"><div class="bth"> <i class="fa-solid fa-thumbs-down fa-xl  "></i></div>&nbsp;<div class="t2">Meh...</div></button>
 {% elif setmeh == True %}
 
-   <button style="background-color:transparent; border: none; color: #66c0f4;"id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger"><div class="bth"> <i class="fa-solid fa-thumbs-down"></i></div>&nbsp;UnMeh</button>
+   <button style="background-color:transparent; border: none; color: #66c0f4;"id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger"><div class="bth"> <i class="fa-solid fa-thumbs-down fa-xl  "></i></div>&nbsp;<div class="t2">UnMeh</div></button>
 
 {% else %}
-  <button style="background-color:transparent; border: none; color: red;"id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger"><div class="bth"> <i class="fa-solid fa-thumbs-down"></i></div>&nbsp;Meh...</button>
+  <button style="background-color:transparent; border: none; color: red;"id="mh" type="submit", name="game_meh", value="{{ game.id }}", class="btn btn-danger"><div class="bth"> <i class="fa-solid fa-thumbs-down fa-xl  "></i></div>&nbsp;<div class="t2">Meh...</div></button>
 
   {%endif%}
    - {{ total_meh }} Users are not Hyped
 
-   <br><br>
+   
 
-<h4>Hyped Users</h4>
-   <div class="progress"  >
-    <div  class="progress-bar" role="progressbar" aria-label="Example with label" style="width: {{inter}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{inter}}%</div>
-  </div>
 
-  <br><br>
-
+  
+</form>
+<br>
 <h4>Meh.... Users</h4>
    <div class="progress"   >
     <div  class="progress-bar" role="progressbar" aria-label="Example with label" style="width: {{ninter}}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ninter}}%</div>
   </div>
   
-  
-</form>
-
 
 <br><br>
 
