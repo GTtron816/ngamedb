@@ -40,9 +40,9 @@
          
         <div  style="margin-left: 50px; margin-top: 30px;" >
           <figure>
-         <div class="card" style="width: fit-content;"  onclick="location.href='{% url 'gamedetails' game.pk %}'" >
-            <img src="{{ game.title_img.url }}" class="card-img-top" alt="..."  style="width: 18rem;" height="180" >
-             
+         <div class="card mb-4 border-0" style="width: 18rem; height: 280px; padding: 0px;"  onclick="location.href='{% url 'gamedetails' game.pk %}'" >
+            <img src="{{ game.title_img.url }}" class="card-img-top" alt="..."  style="width: 18rem; height: 180px; display: block" >
+          
             <div class="card-body">
               <h5 class="card-title">{{game.title}}</h5> {% if request.user.is_superuser %}
               <a href="{% url 'update_game' game.pk %}">Update</a> {%endif%}&nbsp;
