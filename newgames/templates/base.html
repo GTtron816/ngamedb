@@ -6,6 +6,8 @@
       .bdy{
         background-color: rgb(23, 26, 33);
         color: aliceblue;
+         min-height: 100vh; margin:0; 
+         display:flex; flex-direction:column;
       }
       figure .card {
         background-color: rgb(27, 40, 56);
@@ -99,7 +101,13 @@ footer a:hover, footer a:focus {
   text-decoration: none;
 }
 
+footer{
+   min-height:50px; 
+ }
 
+ .cont{
+  flex:1;
+ }
 
       </style>
    <script>
@@ -192,7 +200,7 @@ footer a:hover, footer a:focus {
 
     
 
-    <div style="margin-left: 50px; margin-right: 50px;  margin-top: 20px;  " >
+    <div class="cont" style="margin-left: 50px; margin-right: 50px;  margin-top: 20px;  " >
     {% block content %}
 
     {% endblock %}
