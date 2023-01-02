@@ -68,6 +68,7 @@
 
 <br>
 <div class="ucon">
+{% if user.is_authenticated%}
 <form action="{%url 'hype_game'  game.pk %}"
 method="POST">
 {% csrf_token %}
@@ -129,7 +130,9 @@ method="POST">
 
 
 <iframe id="t" frameBorder="0" width="400" height="400" src="http://127.0.0.1:8000/gamedetails/{{game.pk}}/comment"></iframe>
-
+{%else%}
+<label>An account is required for reactions and posting comments <a href="{% url 'register' %}">Register Here</a> or <a href="{% url 'login' %}">Login Here</a></label>
+{%endif%}
 <h2>Comments</h2>
 <hr>
 {% if not game.comments.all %}
@@ -141,6 +144,7 @@ method="POST">
             {{comment.date_added}}
           </strong>
           <br/>
+          
           {{comment.body}}
           
           <br><br>

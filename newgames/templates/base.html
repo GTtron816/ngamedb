@@ -151,7 +151,7 @@ footer{
             {% if user.is_authenticated%}
 
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">logout</a>
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
 
             {%else%}
@@ -170,7 +170,7 @@ footer{
             <li class="nav-item active">
             {% endif %}
             {% endwith %}
-              <a class="nav-link" href="{% url 'login' %}">login</a>
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
             
             {%endif%}
@@ -228,14 +228,14 @@ footer{
                     <li><a href="{% url 'home' %}">Home</a></li>
 
                     {% if user.is_authenticated%}
-                    <li><a href="{% url 'logout' %}">logout</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
                     {%else%}
                     
 
                     <li><a href="{% url 'register' %}">Register</a></li>
                     
                     
-                    <li><a href="{% url 'login' %}">login</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
                     {%endif%}
                     
                     {% if request.user.is_superuser %}
