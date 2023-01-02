@@ -21,7 +21,7 @@
       figure:hover .card {
         -webkit-transform: scale(1.1);
         transform: scale(1.1);
-        background-color: gray;
+        background-image: linear-gradient(25deg,rgb(39, 50, 62),rgb(44, 65, 88))
       }
       
       
@@ -61,8 +61,9 @@
         padding: 80px; 
         width:500px;
         position: relative ;
-        left:500px;
+        left:450px;
         top:30px;
+        margin-bottom: 80px;
       }
       #reg{
         background-color: #2a475e;
@@ -72,6 +73,7 @@
         position: relative ;
         left:300px;
         top:30px;
+        margin-bottom: 80px;
         height: 600px;
       }
 
@@ -104,10 +106,16 @@ footer a:hover, footer a:focus {
 
 footer{
    min-height:50px; 
+   height: 250px;
+   background-image: linear-gradient(25deg,rgb(39, 40, 51),rgb(44, 65, 88))
  }
 
  .cont{
   flex:1;
+ }
+ select option{
+  background:rgb(39, 40, 51);
+  border:none;
  }
 
       </style>
@@ -127,7 +135,7 @@ footer{
    
   </head>
   <body class="bdy">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-image: linear-gradient(25deg,rgb(39, 50, 62),rgb(44, 65, 88))">
         <!--a class="navbar-brand" href="#">NGameDB</a-->
         <img class="logo" src="/media/icon.png" onclick="location.href='{% url 'home' %}'">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -184,7 +192,7 @@ footer{
             {%if games%}
             <li class="nav-item dropdown ">
               <form method="get" action="{% url 'genrefilter' %}">
-                <select id="dropdown" name="gen" class="form-select bg-dark" aria-label="Select Genre" style="color: white; border:0px;
+                <select id="dropdown" name="gen" class="form-select" aria-label="Select Genre" style="color: white; border:0px; background-color: transparent;
                 outline:0px; margin-top: 9px"    onchange='if(this.value != "null") { this.form.submit(); }'>
                   <option value="null" selected>Select a Genre</option>
                   {% for game in games %}
@@ -212,11 +220,11 @@ footer{
         <div class="row gy-4 gx-5">
             <div class="col-lg-4 col-md-6">
                 <img class="logo" src="/media/icon.png" onclick="location.href='{% url 'home' %}'">
-                <p class="small text-muted">A College Project based on Django, A web app to showcase new and upcomming games.</p>
+                <p class="small text-muted">A College Project based on Django, A web app to showcase new and upcoming games.</p>
                 <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary" href="https://github.com/GTtron816/ngamedb">NGameDB</a></p>
             </div>
             
-            <div class="col-lg-2 col-md-6"  style="margin-left: 50px;">
+            <div class="col-lg-2 col-md-6"  style="margin-left: 150px;">
                 <h5 class="text-white mb-3">Quick links</h5>
                 <ul class="list-unstyled text-muted">
                   
@@ -238,11 +246,11 @@ footer{
                     {%endif%}
                 </ul>
             </div>
-            <div class="col-lg-2 col-md-6">
+            <div class="col-lg-2 col-md-6" style="margin-left:150px">
               <h5 class="text-white mb-3">Sources</h5>
               <div class="row text-muted">
-                <button onclick="location.href='https://github.com/GTtron816'"  style="background-color:transparent; border: none; color: aliceblue;", class="btn btn-primary"><div class="bth"> <i class="fa-brands fa-github fa-2xl"></i></div>&nbsp;<div class="small text-muted" style="margin-top: 1px;">GTtron816</div></button> 
-                <button onclick="location.href='https://github.com/44R0NS4M'" style="background-color:transparent; border: none; color: aliceblue;", class="btn btn-primary"><div class="bth"> <i class="fa-brands fa-github fa-2xl"></i></div>&nbsp;<div class="small text-muted" style="margin-top: 1px;">44R0NS4M</div></button>
+                <button onclick="location.href='https://github.com/GTtron816'"  style="background-color:transparent; border: none; color: aliceblue;", class="btn btn-primary"><div class="bth"> <i class="fa-brands fa-github fa-2xl"></i></div>&nbsp;<div class="small text-muted" style="margin-top: 5px;">GTtron816</div></button> 
+                <button onclick="location.href='https://github.com/44R0NS4M'" style="background-color:transparent; border: none; color: aliceblue;", class="btn btn-primary"><div class="bth"> <i class="fa-brands fa-github fa-2xl"></i></div>&nbsp;<div class="small text-muted" style="margin-top: 5px;">44R0NS4M</div></button>
               </div>
             </div>
             
