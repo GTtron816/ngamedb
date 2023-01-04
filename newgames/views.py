@@ -45,10 +45,12 @@ class GameDetailsView(DetailView):
         tot=total_hyped+total_meh
         try:
             inter=(total_hyped/tot)*100
+            inter=round(inter,2)
         except:
             inter=0
         try:
             ninter=(total_meh/tot)*100
+            ninter=round(ninter,2)
         except:
             ninter=0
         context["games"]= Game.objects.values('gen').distinct()
