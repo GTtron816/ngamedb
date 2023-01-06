@@ -3,12 +3,18 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.conf import settings
 from ckeditor.fields import RichTextField
+GTYPE = (
+    ('free', 'Free'),
+    ('paid','Paid')
+)
+
+
 class Game(models.Model):
     title = models.CharField(max_length=255)
     dev=models.CharField(max_length=255)
     pub=models.CharField(max_length=255)
     gen=models.CharField(max_length=255)
-    gtype=models.CharField(max_length=255)
+    gtype=models.CharField(max_length=255, choices=GTYPE,default='free' )
     syn=RichTextField(blank=False, null=True)
     title_img = models.ImageField(null=True, blank=False, upload_to="title_imgs")
     sc1 = models.ImageField(null=True, blank=False, upload_to="screenshots")
