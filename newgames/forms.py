@@ -15,13 +15,14 @@ class CommentForm(forms.ModelForm):
 class AddGameForm(forms.ModelForm):
     class Meta:
      model = Game
-     fields=('title','dev','pub','gen','gtype','syn','title_img','sc1','sc2','sc3','trailer','plat')
+     fields=('title','dev','pub','gen','gtype','release','syn','title_img','sc1','sc2','sc3','trailer','plat')
      labels={
 		 'title': 'Title',
          'dev': 'Developer',
          'pub': 'Publisher',
          'gen': 'Genre',
          'gtype': 'Game Type',
+         'release': 'Release',
          'syn': 'Synopsis',
          'title_img': 'Title Image',
          'sc1': 'Screenshot 1',
@@ -36,6 +37,7 @@ class AddGameForm(forms.ModelForm):
          'pub': forms.TextInput(attrs={'class': 'form-control'}),
          'gen': forms.TextInput(attrs={'class': 'form-control'}),
          'gtype': forms.TextInput(attrs={'class': 'form-control'}),
+         'release': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
          'syn': forms.Textarea(attrs={'class': 'form-control'}),
          'title_img': forms.FileInput(attrs={'class': 'form-control'}),
          'sc1': forms.FileInput(attrs={'class': 'form-control'}),
