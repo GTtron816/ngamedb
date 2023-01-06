@@ -36,7 +36,7 @@ class AddGameForm(forms.ModelForm):
          'dev': forms.TextInput(attrs={'class': 'form-control'}),
          'pub': forms.TextInput(attrs={'class': 'form-control'}),
          'gen': forms.TextInput(attrs={'class': 'form-control'}),
-         'gtype': forms.TextInput(attrs={'class': 'form-control'}),
+         'gtype': forms.Select(attrs={'class': 'form-control'}),
          'release': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
          'syn': forms.Textarea(attrs={'class': 'form-control'}),
          'title_img': forms.FileInput(attrs={'class': 'form-control'}),
