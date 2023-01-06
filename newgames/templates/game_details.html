@@ -62,6 +62,11 @@
 <label class="abt">Platforms: {{game.plat}}</label><br><br>
 <label class="abt">Genre: {{game.gen}}</label><br><br>
 <label class="abt">Paid/Free: {{game.gtype}}</label><br><br>
+{% if game.release%}
+<label class="abt">Release: {{game.release}}</label><br><br>
+{%else%}
+<label class="abt">Release: Not Available</label><br><br>
+{%endif%}
 <div class="abt"><label><h4>Synopsis</h4></label>
 <p >{{game.syn|safe}}</p></div >
 </div>

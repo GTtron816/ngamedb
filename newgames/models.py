@@ -18,6 +18,7 @@ class Game(models.Model):
     plat=models.CharField(max_length=255,null=True,blank=False)
     hype = models.ManyToManyField(User, related_name='new_games')
     meh = models.ManyToManyField(User, related_name='mehed')
+    release=models.DateField(null=True, blank=True)
     def total_hype(self):
         return self.hype.count()
 
