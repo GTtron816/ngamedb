@@ -38,10 +38,10 @@
       <div class="row" >
          {% for game in allgames %}
          
-        <div  style="margin-left: 20px; margin-top: 30px;" >
+        <div  style="margin-left: 15px; margin-top: 15px;" >
           <figure>
-         <div class="card mb-4 border-0" style="width: 18rem; height: 280px; padding: 0px;"  onclick="location.href='{% url 'gamedetails' game.pk %}'" >
-            <img src="{{ game.title_img.url }}" class="card-img-top" alt="..."  style="width: 18rem; height: 180px; display: block" >
+         <div class="card mb-4 border-0" style="width: 18.5rem; height: 280px; padding: 0px;"  onclick="location.href='{% url 'gamedetails' game.pk %}'" >
+            <img src="{{ game.title_img.url }}" class="card-img-top" alt="..."  style="width: 18.5rem; height: 180px; display: block" >
           
             <div class="card-body">
               <h5 class="card-title">{{game.title}}</h5> {% if request.user.is_superuser %}
