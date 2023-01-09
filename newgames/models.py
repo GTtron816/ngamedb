@@ -4,8 +4,8 @@ from django.urls import reverse
 from django.conf import settings
 from ckeditor.fields import RichTextField
 GTYPE = (
-    ('free', 'Free'),
-    ('paid','Paid')
+    ('Free', 'Free'),
+    ('Paid','Paid')
 )
 
 
